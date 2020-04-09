@@ -1,6 +1,6 @@
 const infectionsBRT = (data, currentlyInfected) => {
   const { timeToElapse, periodType } = data;
-  let factor;
+  let factor = timeToElapse / 3;
 
   if (periodType === 'months') {
     factor = (timeToElapse * 30) / 3;
