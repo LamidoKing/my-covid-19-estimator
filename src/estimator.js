@@ -3,15 +3,15 @@ const infectionsBRT = (data, currentlyInfected) => {
   let factor;
 
   if (periodType === 'months') {
-    factor = (timeToElapse * 30) / 3;
+    factor = Math.floor((timeToElapse * 30) / 3);
   }
 
   if (periodType === 'weeks') {
-    factor = (timeToElapse * 7) / 3;
+    factor = Math.floor((timeToElapse * 7) / 3);
   }
 
   if (periodType === ('days' || '')) {
-    factor = timeToElapse / 3;
+    factor = Math.floor(timeToElapse / 3);
   }
 
   const every3Days = 2 ** factor;
@@ -19,17 +19,26 @@ const infectionsBRT = (data, currentlyInfected) => {
   return currentlyInfected * every3Days;
 };
 
-const severeCasesBRT = (InfectionsByRequestedTime) => (InfectionsByRequestedTime / 100) * 15;
+const severeCasesBRT = (InfectionsByRequestedTime) => {
+  const sCaseBRT = (InfectionsByRequestedTime / 100) * 15;
+  return Math.floor(sCaseBRT);
+};
 
 const hospitalBedsBRT = (totalHospitalBeds, severeCasesByRequestedTime) => {
-  const availableBed = (totalHospitalBeds / 100) * 35;
+  const availableBed = Math.floor((totalHospitalBeds / 100) * 35);
 
   return availableBed - severeCasesByRequestedTime;
 };
 
-const casesForICUBRT = (InfectionsByRequestedTime) => (InfectionsByRequestedTime / 100) * 5;
+const casesForICUBRT = (InfectionsByRequestedTime) => {
+  const casesForICU = Math.floor((InfectionsByRequestedTime / 100) * 5);
+  return casesForICU;
+};
 
-const casesForVentilatorsBRT = (InfectionsByRequestedTime) => (InfectionsByRequestedTime / 100) * 2;
+const casesForVentilatorsBRT = (InfectionsByRequestedTime) => {
+  const casesForVentilators = Math.floor((InfectionsByRequestedTime / 100) * 2);
+  return casesForVentilators;
+};
 
 const dollarsInFlightBRT = (InfectionsByRequestedTime, data) => {
   const { region, timeToElapse } = data;
