@@ -4,10 +4,18 @@ const infectionsBRT = (data, currentlyInfected) => {
 
   if (periodType === 'months') {
     factor = (timeToElapse * 30) / 3;
+
+    const every3Days = 2 ** factor;
+
+    return currentlyInfected * every3Days;
   }
 
   if (periodType === 'weeks') {
     factor = (timeToElapse * 7) / 3;
+
+    const every3Days = 2 ** factor;
+
+    return currentlyInfected * every3Days;
   }
 
   const every3Days = 2 ** factor;
