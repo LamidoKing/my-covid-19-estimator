@@ -1,5 +1,18 @@
-const infectionsBRT = (timeToElapse, currentlyInfected) => {
-  const factor = timeToElapse / 3;
+const infectionsBRT = (data, currentlyInfected) => {
+  const { timeToElapse, periodType } = data;
+  let factor;
+
+  if (periodType === 'months') {
+    factor = (timeToElapse * 30) / 3;
+  }
+
+  if (periodType === 'weeks') {
+    factor = (timeToElapse * 7) / 3;
+  }
+
+  if (periodType === 'days') {
+    factor = timeToElapse / 3;
+  }
 
   const every3Days = 2 ** factor;
 
@@ -30,9 +43,9 @@ const covid19ImpactEstimator = (data) => {
 
   const currentlyInfectedSI = data.reportedCases * 50;
 
-  const infectionsByRequestedTimeI = infectionsBRT(data.timeToElapse, currentlyInfectedI);
+  const infectionsByRequestedTimeI = infectionsBRT(data, currentlyInfectedI);
 
-  const infectionsByRequestedTimeSI = infectionsBRT(data.timeToElapse, currentlyInfectedSI);
+  const infectionsByRequestedTimeSI = infectionsBRT(data, currentlyInfectedSI);
 
   const severeCasesByRequestedTimeI = severeCasesBRT(infectionsByRequestedTimeI);
 
