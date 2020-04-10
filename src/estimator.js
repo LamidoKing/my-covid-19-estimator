@@ -11,7 +11,7 @@ const infectionsBRT = (data, currentlyInfected) => {
   }
 
   if (periodType === ('days' || '')) {
-    factor = Math.floor(timeToElapse / 3);
+    factor = Math.ceil(timeToElapse / 3);
   }
 
   const every3Days = 2 ** factor;
