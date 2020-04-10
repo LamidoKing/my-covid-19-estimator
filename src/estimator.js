@@ -36,7 +36,7 @@ const casesForICUBRT = (InfectionsByRequestedTime) => {
 };
 
 const casesForVentilatorsBRT = (InfectionsByRequestedTime) => {
-  const casesForVentilators = parseInt((InfectionsByRequLestedTime / 100) * 2, 10);
+  const casesForVentilators = parseInt((InfectionsByRequestedTime / 100) * 2, 10);
   return casesForVentilators;
 };
 
@@ -44,7 +44,9 @@ const dollarsInFlightBRT = (InfectionsByRequestedTime, data) => {
   const { region, timeToElapse } = data;
   const { avgDailyIncomePopulation, avgDailyIncomeInUSD } = region;
 
-  return InfectionsByRequestedTime * (avgDailyIncomePopulation / 100) * avgDailyIncomeInUSD * timeToElapse;
+  const avgDPop = avgDailyIncomePopulation / 100;
+
+  return InfectionsByRequestedTime * avgDPop * avgDailyIncomeInUSD * timeToElapse;
 };
 
 const covid19ImpactEstimator = (data) => {
