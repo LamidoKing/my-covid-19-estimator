@@ -32,12 +32,12 @@ const hospitalBedsBRT = (totalHospitalBeds, severeCasesByRequestedTime) => {
 
 const casesForICUBRT = (InfectionsByRequestedTime) => {
   const casesForICU = (InfectionsByRequestedTime / 100) * 5;
-  return parseInt(casesForICU, 10);
+  return casesForICU;
 };
 
 const casesForVentilatorsBRT = (InfectionsByRequestedTime) => {
   const casesForVentilators = (InfectionsByRequestedTime / 100) * 2;
-  return parseInt(casesForVentilators, 10);
+  return (casesForVentilators);
 };
 
 const dollarsInFlightBRT = (InfectionsByRequestedTime, data) => {
@@ -48,7 +48,7 @@ const dollarsInFlightBRT = (InfectionsByRequestedTime, data) => {
 
   const time = periodTodays(timeToElapse, periodType);
 
-  return parseInt(InfectionsByRequestedTime * avgDPop * avgDailyIncomeInUSD * time, 10);
+  return Math.floor(InfectionsByRequestedTime * avgDPop * avgDailyIncomeInUSD * time);
 };
 
 const covid19ImpactEstimator = (data) => {
