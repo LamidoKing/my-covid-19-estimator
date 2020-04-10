@@ -20,7 +20,7 @@ const infectionsBRT = (data, currentlyInfected) => {
 };
 
 const severeCasesBRT = (InfectionsByRequestedTime) => {
-  const sCaseBRT = Math.floor((InfectionsByRequestedTime / 100) * 15);
+  const sCaseBRT = Math.round((InfectionsByRequestedTime / 100) * 15);
   return sCaseBRT;
 };
 
