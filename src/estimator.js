@@ -37,7 +37,7 @@ const casesForICUBRT = (InfectionsByRequestedTime) => {
 
 const casesForVentilatorsBRT = (InfectionsByRequestedTime) => {
   const casesForVentilators = (InfectionsByRequestedTime / 100) * 2;
-  return parseInt(casesForVentilators, 10);
+  return casesForVentilators;
 };
 
 const dollarsInFlightBRT = (InfectionsByRequestedTime, data) => {
