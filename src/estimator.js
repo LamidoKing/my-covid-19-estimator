@@ -31,13 +31,13 @@ const hospitalBedsBRT = (totalHospitalBeds, severeCasesByRequestedTime) => {
 };
 
 const casesForICUBRT = (InfectionsByRequestedTime) => {
-  const casesForICU = (InfectionsByRequestedTime / 100) * 5;
+  const casesForICU = parseInt(InfectionsByRequestedTime / 100, 10) * 5;
   return casesForICU;
 };
 
 const casesForVentilatorsBRT = (InfectionsByRequestedTime) => {
-  const casesForVentilators = (InfectionsByRequestedTime / 100) * 2;
-  return parseInt(casesForVentilators, 10);
+  const casesForVentilators = parseInt(InfectionsByRequestedTime / 100, 10) * 2;
+  return (casesForVentilators);
 };
 
 const dollarsInFlightBRT = (InfectionsByRequestedTime, data) => {
