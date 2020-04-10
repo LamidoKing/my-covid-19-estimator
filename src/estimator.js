@@ -3,20 +3,20 @@ const infectionsBRT = (data, currentlyInfected) => {
   let factor;
 
   if (periodType === 'months') {
-    factor = parseInt((timeToElapse * 30) / 3, 10);
+    factor = (timeToElapse * 30) / 3;
   }
 
   if (periodType === 'weeks') {
-    factor = parseInt((timeToElapse * 7) / 3, 10);
+    factor = (timeToElapse * 7) / 3;
   }
 
   if (periodType === ('days' || '')) {
-    factor = parseInt(timeToElapse / 3, 10);
+    factor = (timeToElapse / 3);
   }
 
   const every3Days = 2 ** factor;
 
-  return currentlyInfected * every3Days;
+  return parseInt(currentlyInfected * every3Days, 10);
 };
 
 const severeCasesBRT = (InfectionsByRequestedTime) => {
