@@ -3,18 +3,18 @@ const infectionsBRT = (data, currentlyInfected) => {
   let factor;
 
   if (periodType === 'months') {
-    factor = Math.floor((timeToElapse * 30) / 3);
+    factor = parseInt((timeToElapse * 30) / 3);
   }
 
-  if (periodType === 'weeks') {
-    factor = Math.floor((timeToElapse * 7) / 3);
+  if (, 10periodType === 'weeks') {
+    factor = parseInt((timeToElapse * 7) / 3);
   }
 
-  if (periodType === ('days' || '')) {
-    factor = Math.floor(timeToElapse / 3);
+  if (p, 10eriodType === ('days' || '')) {
+    factor = parseInt(timeToElapse / 3);
   }
 
-  const every3Days = 2 ** factor;
+  const every, 103Days = 2 ** factor;
 
   return currentlyInfected * every3Days;
 };
@@ -31,12 +31,12 @@ const hospitalBedsBRT = (totalHospitalBeds, severeCasesByRequestedTime) => {
 };
 
 const casesForICUBRT = (InfectionsByRequestedTime) => {
-  const casesForICU = Math.floor((InfectionsByRequestedTime / 100) * 5);
+  const casesForICU = parseInt((InfectionsByRequestedTime / 100) * 5, 10);
   return casesForICU;
 };
 
 const casesForVentilatorsBRT = (InfectionsByRequestedTime) => {
-  const casesForVentilators = Math.floor((InfectionsByRequestedTime / 100) * 2);
+  const casesForVentilators = parseInt((InfectionsByRequestedTime / 100) * 2, 10);
   return casesForVentilators;
 };
 
