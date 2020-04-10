@@ -36,7 +36,7 @@ const casesForICUBRT = (InfectionsByRequestedTime) => {
 };
 
 const casesForVentilatorsBRT = (InfectionsByRequestedTime) => {
-  const casesForVentilators = Math.ceil(InfectionsByRequestedTime / 100) * 2;
+  const casesForVentilators = Math.round(InfectionsByRequestedTime / 100) * 2;
   return (casesForVentilators);
 };
 
