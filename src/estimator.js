@@ -20,12 +20,12 @@ const infectionsBRT = (data, currentlyInfected) => {
 };
 
 const severeCasesBRT = (InfectionsByRequestedTime) => {
-  const sCaseBRT = Math.round((InfectionsByRequestedTime / 100) * 15);
+  const sCaseBRT = parseInt((InfectionsByRequestedTime / 100) * 15, 10);
   return sCaseBRT;
 };
 
 const hospitalBedsBRT = (totalHospitalBeds, severeCasesByRequestedTime) => {
-  const availableBed = Math.round((totalHospitalBeds / 100) * 35);
+  const availableBed = parseInt((totalHospitalBeds / 100) * 35, 10);
 
   return availableBed - severeCasesByRequestedTime;
 };
