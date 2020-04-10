@@ -25,7 +25,7 @@ const severeCasesBRT = (InfectionsByRequestedTime) => {
 };
 
 const hospitalBedsBRT = (totalHospitalBeds, severeCasesByRequestedTime) => {
-  const availableBed = Math.floor((totalHospitalBeds / 100) * 35);
+  const availableBed = Math.round((totalHospitalBeds / 100) * 35);
 
   return availableBed - severeCasesByRequestedTime;
 };
