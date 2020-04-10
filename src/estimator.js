@@ -44,7 +44,7 @@ const dollarsInFlightBRT = (InfectionsByRequestedTime, data) => {
   const { region, timeToElapse } = data;
   const { avgDailyIncomePopulation, avgDailyIncomeInUSD } = region;
 
-  const avgDPop = parseInt(avgDailyIncomePopulation / 100, 10);
+  const avgDPop = Math.ceil(avgDailyIncomePopulation / 100);
 
   return InfectionsByRequestedTime * avgDPop * avgDailyIncomeInUSD * timeToElapse;
 };
