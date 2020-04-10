@@ -1,18 +1,18 @@
-const infectionsBRT = (data, currentlyInfected) => {
-  const { timeToElapse, periodType } = data;
-  let factor;
-
+const periodTodays = (timeToElapse, periodType) => {
   if (periodType === 'months') {
-    factor = parseInt((timeToElapse * 30) / 3, 10);
+    return parseInt((timeToElapse * 30) / 3, 10);
   }
 
   if (periodType === 'weeks') {
-    factor = parseInt((timeToElapse * 7) / 3, 10);
+    return parseInt((timeToElapse * 7) / 3, 10);
   }
 
-  if (periodType === ('days' || '')) {
-    factor = parseInt(timeToElapse / 3, 10);
-  }
+  return parseInt(timeToElapse / 3, 10);
+};
+
+const infectionsBRT = (data, currentlyInfected) => {
+  const { timeToElapse, periodType } = data;
+  const factor = periodTodays(timeToElapse, periodType);
 
   const every3Days = 2 ** factor;
 
@@ -41,12 +41,14 @@ const casesForVentilatorsBRT = (InfectionsByRequestedTime) => {
 };
 
 const dollarsInFlightBRT = (InfectionsByRequestedTime, data) => {
-  const { region, timeToElapse } = data;
+  const { region, timeToElapse, periodType } = data;
   const { avgDailyIncomePopulation, avgDailyIncomeInUSD } = region;
 
   const avgDPop = avgDailyIncomePopulation / 100;
 
-  return (InfectionsByRequestedTime * avgDPop * avgDailyIncomeInUSD * timeToElapse);
+  const time = periodTodays(timeToElapse, periodType);
+
+  return (InfectionsByRequestedTime * avgDPop * avgDailyIncomeInUSD * time);
 };
 
 const covid19ImpactEstimator = (data) => {
