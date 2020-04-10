@@ -31,12 +31,12 @@ const hospitalBedsBRT = (totalHospitalBeds, severeCasesByRequestedTime) => {
 };
 
 const casesForICUBRT = (InfectionsByRequestedTime) => {
-  const casesForICU = ((InfectionsByRequestedTime / 100) * 5);
+  const casesForICU = Math.floor((InfectionsByRequestedTime / 100) * 5);
   return casesForICU;
 };
 
 const casesForVentilatorsBRT = (InfectionsByRequestedTime) => {
-  const casesForVentilators = ((InfectionsByRequestedTime / 100) * 2);
+  const casesForVentilators = Math.floor((InfectionsByRequestedTime / 100) * 2);
   return casesForVentilators;
 };
 
