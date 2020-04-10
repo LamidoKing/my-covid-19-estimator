@@ -11,7 +11,7 @@ const infectionsBRT = (data, currentlyInfected) => {
   }
 
   if (periodType === ('days' || '')) {
-    factor = Math.round(timeToElapse / 3);
+    factor = Math.floor(timeToElapse / 3);
   }
 
   const every3Days = 2 ** factor;
@@ -20,12 +20,12 @@ const infectionsBRT = (data, currentlyInfected) => {
 };
 
 const severeCasesBRT = (InfectionsByRequestedTime) => {
-  const sCaseBRT = Math.ceil((InfectionsByRequestedTime / 100) * 15);
+  const sCaseBRT = Math.round((InfectionsByRequestedTime / 100) * 15);
   return sCaseBRT;
 };
 
 const hospitalBedsBRT = (totalHospitalBeds, severeCasesByRequestedTime) => {
-  const availableBed = Math.ceil((totalHospitalBeds / 100) * 35);
+  const availableBed = Math.round((totalHospitalBeds / 100) * 35);
 
   return availableBed - severeCasesByRequestedTime;
 };
