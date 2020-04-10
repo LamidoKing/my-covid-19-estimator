@@ -46,7 +46,7 @@ const dollarsInFlightBRT = (InfectionsByRequestedTime, data) => {
 
   const avgDPop = avgDailyIncomePopulation / 100;
 
-  return parseInt(InfectionsByRequestedTime * avgDPop * avgDailyIncomeInUSD * timeToElapse, 10);
+  return (InfectionsByRequestedTime * avgDPop * avgDailyIncomeInUSD * timeToElapse);
 };
 
 const covid19ImpactEstimator = (data) => {
