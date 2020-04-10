@@ -20,8 +20,8 @@ const infectionsBRT = (data, currentlyInfected) => {
 };
 
 const severeCasesBRT = (InfectionsByRequestedTime) => {
-  const sCaseBRT = (InfectionsByRequestedTime / 100) * 15;
-  return Math.floor(sCaseBRT);
+  const sCaseBRT = Math.floor((InfectionsByRequestedTime / 100) * 15);
+  return sCaseBRT;
 };
 
 const hospitalBedsBRT = (totalHospitalBeds, severeCasesByRequestedTime) => {
