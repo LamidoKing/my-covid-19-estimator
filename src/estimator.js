@@ -45,7 +45,8 @@ const dollarsInFlightBRT = (InfectionsByRequestedTime, data) => {
 
   const time = periodTodays(timeToElapse, periodType);
 
-  return (InfectionsByRequestedTime * avgDPop * avgDailyIncomeInUSD * time);
+  return (InfectionsByRequestedTime * avgDPop * avgDailyIncomeInUSD * time
+  );
 };
 
 const covid19ImpactEstimator = (data) => {
