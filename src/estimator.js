@@ -32,7 +32,10 @@ const hospitalBedsBRT = (totalHospitalBeds, severeCasesByRequestedTime) => {
 
 const casesForICUBRT = (InfectionsByRequestedTime) => (InfectionsByRequestedTime / 100) * 5;
 
-const casesForVentilatorsBRT = (InfectionsByRequestedTime) => (InfectionsByRequestedTime / 100) * 2;
+const casesForVentilatorsBRT = (InfectionsByRequestedTime) => {
+  const casesForVentilators = parseInt((InfectionsByRequestedTime / 100) * 2, 10);
+  return casesForVentilators;
+};
 
 const dollarsInFlightBRT = (InfectionsByRequestedTime, data) => {
   const { region, timeToElapse, periodType } = data;
