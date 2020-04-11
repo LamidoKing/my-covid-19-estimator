@@ -1,18 +1,18 @@
 const periodTodays = (timeToElapse, periodType) => {
   if (periodType === 'months') {
-    return parseInt((timeToElapse * 30) / 3, 10);
+    return (timeToElapse * 30);
   }
 
   if (periodType === 'weeks') {
-    return parseInt((timeToElapse * 7) / 3, 10);
+    return (timeToElapse * 7);
   }
 
-  return parseInt(timeToElapse / 3, 10);
+  return (timeToElapse);
 };
 
 const infectionsBRT = (data, currentlyInfected) => {
   const { timeToElapse, periodType } = data;
-  const factor = periodTodays(timeToElapse, periodType);
+  const factor = parseInt(periodTodays(timeToElapse, periodType) / 3, 10);
 
   const every3Days = 2 ** factor;
 
@@ -30,15 +30,9 @@ const hospitalBedsBRT = (totalHospitalBeds, severeCasesByRequestedTime) => {
   return parseInt(availableBed - severeCasesByRequestedTime, 10);
 };
 
-const casesForICUBRT = (InfectionsByRequestedTime) => {
-  const casesForICU = (InfectionsByRequestedTime / 100) * 5;
-  return casesForICU;
-};
+const casesForICUBRT = (InfectionsByRequestedTime) => (InfectionsByRequestedTime / 100) * 5;
 
-const casesForVentilatorsBRT = (InfectionsByRequestedTime) => {
-  const casesForVentilators = (InfectionsByRequestedTime / 100) * 2;
-  return casesForVentilators;
-};
+const casesForVentilatorsBRT = (InfectionsByRequestedTime) => (InfectionsByRequestedTime / 100) * 2;
 
 const dollarsInFlightBRT = (InfectionsByRequestedTime, data) => {
   const { region, timeToElapse, periodType } = data;
